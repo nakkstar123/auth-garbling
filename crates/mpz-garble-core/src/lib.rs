@@ -23,13 +23,13 @@ pub use circuit::{AuthEncryptedGate, AuthEncryptedGateBatch, EncryptedGate, Encr
 pub use evaluator::{evaluate_garbled_circuits, EncryptedGateBatchConsumer, EncryptedGateConsumer, Evaluator,
     EvaluatorError, EvaluatorOutput,};
 pub use auth_eval::{
-     AuthEvaluator, AuthEvaluatorOutput, AuthEvaluatorError, AndGateTable
+     AuthEvaluator, AuthEvaluatorError, AndGateTable
 };
 
 pub use generator::{EncryptedGateBatchIter, EncryptedGateIter, Generator, GeneratorError, GeneratorOutput};
 pub use auth_gen::{AuthGenerator, AuthGeneratorError};
 
-pub use fpre::Fpre;
+pub use fpre::{Fpre, FpreError};
 pub use mpz_memory_core::correlated::{Delta, Key, Mac};
 
 const KB: usize = 1024;
@@ -400,7 +400,9 @@ mod tests {
 }
 
 // Next steps:
-// 1) Error handling
-// 2) Input processing -- differentiate between Alice and Bob's inputs -- right now Bob picks all inputs
-// 3) Output processing -- allow Alice to learn output as well, optimize by masking to sec param
+// 1) Input processing -- differentiate between Alice and Bob's inputs -- right now Bob picks all inputs
+// 2) Robust testing with different circuits
+// ---
+// 3) Output processing -- allow Gen to learn output as well, optimize by masking to sec param
 // 4) Hash tweaks
+
